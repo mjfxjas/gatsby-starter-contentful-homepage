@@ -4,6 +4,15 @@
 
 # Gatsby Starter Contentful Homepage
 
+> Personal fork I keep around for Contentful demos. The notes below are my workflow so future me remembers how to bring this thing back online quickly.
+
+## Repo Status
+
+- **Stack:** Gatsby 4, Contentful, Vanilla Extract.
+- **Usage:** Reference implementation for pitch decks and Contentful onboarding sessions.
+- **Last verified:** November 2025 (`yarn install && yarn start`).
+- **Deployment target:** Gatsby Cloud (Preview + Build) or Netlify if I only need static hosting.
+
 Create a homepage using Gatsby and Contentful. This starter demonstrates how to use Contentful to build a homepage and can be customized to match your own visual branding.
 
 [View the Demo](https://gatsbycontentfulhomepage.gatsbyjs.io/)
