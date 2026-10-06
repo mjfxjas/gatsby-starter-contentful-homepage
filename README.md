@@ -1,100 +1,39 @@
-<a href="https://www.gatsbyjs.com">
-  <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-</a>
+# Gatsby Contentful Homepage
 
-# Gatsby Starter Contentful Homepage
+Gatsby 4 homepage starter backed by Contentful, with Vanilla Extract styles.
+Based on [gatsbyjs/gatsby-starter-contentful-homepage](https://github.com/gatsbyjs/gatsby-starter-contentful-homepage).
 
-> Personal fork I keep around for Contentful demos. The notes below are my workflow so future me remembers how to bring this thing back online quickly.
+## Setup
 
-## Repo Status
+Use a Contentful space, its Space ID, a Content Management API key, and a Content
+Delivery API key.
 
-- **Stack:** Gatsby 4, Contentful, Vanilla Extract.
-- **Usage:** Reference implementation for pitch decks and Contentful onboarding sessions.
-- **Last verified:** November 2025 (`yarn install && yarn start`).
-- **Deployment target:** Gatsby Cloud (Preview + Build) or Netlify if I only need static hosting.
+```sh
+yarn install
+yarn setup
+yarn start
+```
 
-Create a homepage using Gatsby and Contentful. This starter demonstrates how to use Contentful to build a homepage and can be customized to match your own visual branding.
+`yarn setup` prompts for Contentful credentials, creates the content model, and
+adds demo content. Open `http://localhost:8000` after starting the development
+server.
 
-[View the Demo](https://gatsbycontentfulhomepage.gatsbyjs.io/)
+- [Find a Space ID](https://www.contentful.com/help/find-space-id/)
+- [Contentful API keys](https://www.contentful.com/developers/docs/references/authentication/)
 
-**Note:**
-This version of the Contentful homepage starter is written in JavaScript. If you want to use Contentful but TypeScript is more your style, there is also a TypeScript version maintained on [GitHub](https://github.com/gatsbyjs/gatsby-starter-contentful-homepage-ts).
+## Build and Hosting
 
-## Quick start
+```sh
+yarn build
+yarn serve
+```
 
-You will need a new or existing [Contentful space][] to use this starter and will be asked for your [Space ID][], [Content Management API Key][] (also referred to as a Personal Access Token) and [Content Delivery API Key][] during installation.
+Provide `CONTENTFUL_SPACE_ID` and `CONTENTFUL_ACCESS_TOKEN` to the build
+environment; `.env.EXAMPLE` lists the expected keys. Build output is written to
+`public/` and can be served by a static host. Contentful setup changes the selected
+space's content model and adds demo content.
 
-[contentful space]: https://www.contentful.com/help/contentful-101/#step-2-create-a-space
-[space id]: https://www.contentful.com/help/find-space-id/
-[content delivery api key]: https://www.contentful.com/developers/docs/references/authentication/#api-keys-in-the-contentful-web-app
-[content management api key]: https://www.contentful.com/developers/docs/references/authentication/#the-content-management-api
-
-1. **Create a Gatsby site**
-
-   Use the Gatsby CLI to get started locally:
-
-   ```sh repo
-   npx gatsby new my-homepage https://github.com/gatsbyjs/gatsby-starter-contentful-homepage
-   ```
-
-1. **Run the Contentful setup script**
-
-   From your site's root directory, run:
-
-   ```sh
-   cd my-homepage
-   yarn setup
-   ```
-
-   This will run a script to populate your Contentful space's content model and add demo content.
-
-1. **Start developing**
-
-   In your site directory, start the development server:
-
-   ```sh
-   yarn start
-   ```
-
-   Your site should now be running at <http://localhost:8000>
-
-1. **Open the source code and start editing**
-
-## Deploy your site
-
-Once your content is available in Contentful, deploy your site to [Gatsby Cloud](https://gatsbyjs.com/products/cloud):
-
-1. Push your local site to a new repo in either GitHub, GitLab, or Bitbucket
-1. Log into your [Gatsby Cloud Dashboard][] and click on **Add a site**
-1. Use the **Import from a Git repository** option to find your site
-1. Add the environment variables from your `.env.production` file to Gatsby Cloud during setup
-1. Click **Build site** and your site should start building
-
-For a more detailed walkthrough, see the tutorial on how to [build your site with Gatsby Cloud][tutorial].
-
-[gatsby cloud dashboard]: https://gatsbyjs.com/dashboard
-[tutorial]: https://www.gatsbyjs.com/docs/tutorial/part-1/#build-your-site-with-gatsby-cloud
-
-### Deploy without using the CLI
-
-Alternatively, you can deploy this starter directly to Gatsby Cloud.
-
-This repository uses the `gatsby-provision` convention to allow for automatic CMS content provisioning during the Deploy Now flow in Gatsby Cloud. After you Quick Connect Contentful to your site, you will be given the option to run the `gatsby-provision` script to populate the selected Contentful space with the site's associated content model and content.
-
-Otherwise, you can always set up your content in Contentful manually before deploying to Gatsby Cloud.
-
-[![Deploy to Gatsby](https://www.gatsbyjs.com/deploynow.png "Deploy to Gatsby")](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-contentful-homepage)
-
-## Setting up Gatsby Cloud Preview
-
-To use Gatsby Cloud Preview with this site, see the documentation for
-[Installing Content Sync for Contentful][].
-
-[installing content sync for contentful]: https://support.gatsbyjs.com/hc/en-us/articles/4410371995539-Installing-Content-Sync-for-Contentful
-[add the gatsby cloud app to contentful]: https://support.gatsbyjs.com/hc/en-us/articles/360056047134-Add-the-Gatsby-Cloud-App-to-Contentful
-[connecting to contentful manually]: https://support.gatsbyjs.com/hc/en-us/articles/360052076554-Connecting-to-Contentful-Manually
-
-## What's included?
+## Layout
 
 ```sh
 ├── README.md
@@ -117,13 +56,13 @@ To use Gatsby Cloud Preview with this site, see the documentation for
 [gatsby node]: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/
 [vanilla extract]: https://vanilla-extract.style/
 
-## How to
+## Customization
 
 ### Update the color theme
 
 To update the colors used in this starter, edit the `src/colors.css.ts` file.
 
-```.ts
+```ts
 // src/colors.css.ts
 export const colors = {
   background: "#ffd500",
@@ -223,7 +162,7 @@ For this example, we'll create a new "Banner" component.
 
 1. Next, create the Banner component:
 
-   ```jsx fileExt
+   ```jsx
    // src/components/banner.js
    import * as React from "react"
    import { graphql } from "gatsby"
@@ -251,7 +190,7 @@ For this example, we'll create a new "Banner" component.
 
 1. Export the component from `src/components/sections.js`
 
-   ```js fileExt
+   ```js
    // src/components/sections.js
    export { default as HomepageHero } from "./hero"
    export { default as HomepageFeature } from "./feature"
@@ -269,7 +208,7 @@ For this example, we'll create a new "Banner" component.
 
 1. Add the GraphQL query fragment to the query in `src/pages/index.js`
 
-   ```js fileExt
+   ```js
    // in src/pages/index.js
    export const query = graphql`
      {
@@ -311,17 +250,9 @@ If you've made changes to the `gatsby-node.js` file or changes to the Contentful
 yarn clean && yarn start
 ```
 
----
+## References
 
-## 🎓 Learning Gatsby
-
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.com/). Here are some places to start:
-
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.com/docs/).**
-
-## 💫 Deploy
-
-[Build, Deploy, and Host On The Only Cloud Built For Gatsby](https://www.gatsbyjs.com/cloud/)
-
-Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby framework that combines a modern developer experience with an optimized, global edge network.
+- [Gatsby documentation](https://www.gatsbyjs.com/docs/)
+- [Contentful documentation](https://www.contentful.com/developers/docs/)
+- [Adding a blog](docs/adding-a-blog.md)
+- License terms: `LICENSE`
